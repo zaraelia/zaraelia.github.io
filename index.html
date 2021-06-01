@@ -1,6 +1,29 @@
 <!DOCTYPE html>
 <html>
-<body>
-<h1>Hello World</h1>
-</body>
+    <head>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <h1>Generator</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        
+        <label for="generator">What would you like to generate? </label>
+        <select name="generator" id="generator">
+            <option value="weapon">Weapons</option>
+            <option value="element">Elements</option>
+            <option value="school">Schools of Magic</option>
+            <option value="combo">Combinations</option>
+            <option value="affinity">Affinity Charts</option>
+            <option value="martial">Martial Arts School</option>
+            <option value="character">Character Descriptions</option>
+        </select>
+        <label for="quantity">Quantity: </label>
+        <select name="quantity" id="quantity">
+            <option value="one">1</option>
+            <option value="five">5</option>
+            <option value="ten">10</option>
+        </select>
+
+        <button type="button">Generate</button>
+    </body>
 </html>
