@@ -39,12 +39,6 @@ var schools =
     "necromancy"
 ]
 
-var weaponSize =
-[
-    "one handed",
-    "two handed"
-]
-
 var weaponEdge =
 [
     "single edge",
@@ -52,7 +46,13 @@ var weaponEdge =
     "thrusting"
 ]
 
-var oneHandedweapons= 
+var weaponHead =
+[
+    "single headed",
+    "double headed"
+]
+
+var oneHandedWeapons= 
 [
     "dagger",
     "sword",
@@ -67,6 +67,7 @@ var oneHandedweapons=
     "wand",
     "scepter",
     "tome",
+    "trinket",
     "magic fist",   
 ]
 
@@ -175,38 +176,75 @@ function pickWeapon()
     var weaponRoll = Math.floor(Math.random() * 10);
     var weaponBase = "";
 
-    //two hander 50%
+    //two hander
     if(weaponRoll < 5)
     {
-        weaponBase = twoHandedWeapons.random();
+        weaponBase = pickTwoHandWeapon();
+        if(weaponBase.includes("sword") || weaponBase.includes("axe") || 
+           weaponBase.includes("hammer") || weaponBase.includes("mace"))
+        {
+            weaponBase = "two handed " + weaponBase;
+        }
+        if (!weaponBase.includes("fist"))
+        {
+            weaponBase = "A " + weaponBase;
+        } 
     }
     else
     {
-        weaponBase = oneHandedweapons.random();
+        weaponBase = "A "+ pickOneHandWeapon() + " in the main hand";
 
         var oneHandRoll = Math.floor(Math.random() * 30);
         console.log(oneHandRoll);
         if(oneHandRoll < 10)
         {
-            weaponBase = weaponBase.concat(" " + oneHandedweapons.random());
+            weaponBase = weaponBase.concat(" and  " + pickOneHandWeapon() + " in the off hand");
         }
         else if(oneHandRoll < 20)
         {
-            weaponBase = weaponBase.concat(" " + shields.random() + " shield");
+            weaponBase = weaponBase.concat(" and " + shields.random() + " shield in the off hand");
         }
+        
     }
+    weaponBase = weaponBase.concat(".");
     var auxiliaryRoll = Math.floor(Math.random() * 2);
     if(auxiliaryRoll == 0)
     {
-        weaponBase = weaponBase.concat(" and " + auxiliaryWeapons.random() + " as a backup");
+        weaponBase = weaponBase.concat(" " + pickAuxiliaryWeapon() + " as a backup weapon.");
     }
 
     return weaponBase;
 }
 
+function checkEdge(weapon)
+{
+    if(weapon.includes("sword") || weapon.includes("dagger"))
+    {
+        return weaponEdge.random().concat(" " + weapon);
+    }
+    else if(weapon.includes("axe") || weapon.includes("hammer"))
+    {
+        return weaponHead.random().concat(" " + weapon);
+    }
+    else
+    {
+        return weapon;
+    }
+}
+
+function pickOneHandWeapon()
+{
+    return checkEdge(oneHandedWeapons.random());
+}
+
+function pickTwoHandWeapon()
+{
+    return checkEdge(twoHandedWeapons.random());
+}
+
 function pickAuxiliaryWeapon()
 {
-    return auxiliaryWeapons.random();
+    return checkEdge(auxiliaryWeapons.random());
 }
 
 function pickSchool()
