@@ -3,3 +3,7 @@ body {
     color: #96c8ca;
     background-color: #212525;
 }
+
+td {
+    padding: 0 100px 0 0;
+}
