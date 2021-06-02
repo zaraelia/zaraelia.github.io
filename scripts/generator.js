@@ -47,7 +47,7 @@ var weaponSize =
 
 var weaponEdge =
 [
-    "singe edge",
+    "single edge",
     "double edge",
     "thrusting"
 ]
@@ -67,13 +67,21 @@ var oneHandedweapons=
     "wand",
     "scepter",
     "tome",
-    "magic fist",
+    "magic fist",   
+]
+
+var auxiliaryWeapons=
+[
+    "dagger",
+    "wand",
     "trinket",
     "throwing knives",
     "throwing axes",
     "chakram",
     "bo shuriken",
-    "hira shuriken"
+    "hira shuriken",
+    "inscription scrolls",
+    "potions",
 ]
 
 var twoHandedWeapons = 
@@ -93,6 +101,8 @@ var twoHandedWeapons =
     "staff",
     "longbow",
     "shortbow",
+    "magic fists",
+    "fist weapons"
 ]
 
 var shields = 
@@ -135,6 +145,7 @@ function generate()
                 generatedText = document.createTextNode(pickElement()); 
                 break;
             case "weapon" :
+                generatedText = document.createTextNode(pickWeapon());
                 break;
             case "school" :
                 generatedText = document.createTextNode(pickSchool());
@@ -161,7 +172,41 @@ function pickElement()
 
 function pickWeapon()
 {
+    var weaponRoll = Math.floor(Math.random() * 10);
+    var weaponBase = "";
 
+    //two hander 50%
+    if(weaponRoll < 5)
+    {
+        weaponBase = twoHandedWeapons.random();
+    }
+    else
+    {
+        weaponBase = oneHandedweapons.random();
+
+        var oneHandRoll = Math.floor(Math.random() * 30);
+        console.log(oneHandRoll);
+        if(oneHandRoll < 10)
+        {
+            weaponBase = weaponBase.concat(" " + oneHandedweapons.random());
+        }
+        else if(oneHandRoll < 20)
+        {
+            weaponBase = weaponBase.concat(" " + shields.random() + " shield");
+        }
+    }
+    var auxiliaryRoll = Math.floor(Math.random() * 2);
+    if(auxiliaryRoll == 0)
+    {
+        weaponBase = weaponBase.concat(" and " + auxiliaryWeapons.random() + " as a backup");
+    }
+
+    return weaponBase;
+}
+
+function pickAuxiliaryWeapon()
+{
+    return auxiliaryWeapons.random();
 }
 
 function pickSchool()
