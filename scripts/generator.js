@@ -251,3 +251,18 @@ function pickSchool()
 {
     return schools.random();
 }
+
+function showDiv(divId, element)
+{
+    //show and hide the appropriate elements for each dropdown selection
+    //main focus is for affinity chart since i need to add a canvas to draw the hexagon
+    //consider limiting the number of canvases
+    switch(element.value)
+    {
+        case "affinity":
+            document.getElementById(divId).style.display = 'block';
+            break;
+        default:
+            document.getElementById(divId).style.display = 'none';
+    }
+}
