@@ -121,6 +121,11 @@ var shields =
     "tribal"
 ]
 
+var ranks = 
+[
+    "S", "A", "B", "C", "D", "E"
+]
+
 
 function generate()
 {
@@ -155,6 +160,7 @@ function generate()
                 generatedText = document.createTextNode(pickElement() + ' ' + pickSchool());
                 break;
             case "affinity" :
+                generatedText = document.createTextNode(pickAffinity());
                 break;
             default:
                 //do something
@@ -164,6 +170,42 @@ function generate()
         cell1.appendChild(generatedText);
     } 
     
+}
+
+function pickAffinity()
+{
+    // s - 1/250 a 5/250 b 10/250  c 50/250 d 100/250 e 90/250
+    var affinity = [];
+    for(var i = 0; i < 6; i++)
+    {
+        var roll = Math.floor((Math.random() * 201));
+        if(roll == 0)
+        {
+            affinity[i] = "S";
+        }
+        else if (roll <= 5)
+        {
+            affinity[i] = "A";
+        }
+        else if (roll <= 15)
+        {
+            affinity[i] = "B";
+        }
+        else if (roll <= 65)
+        {
+            affinity[i] = "C"; 
+        }
+        else if (roll <= 150)
+        {
+            affinity[i] = "D";
+        }
+        else
+        {
+            affinity[i] = "E";
+        }
+    }
+    return "Ignis: " + affinity[0] + ", Aqua: " + affinity[1] + ", Terra: " + affinity[2] +  
+           ", Vis: " + affinity[3] + ", Lux: " + affinity[4] + ", Nox: " + affinity[5];
 }
 
 function pickElement()
