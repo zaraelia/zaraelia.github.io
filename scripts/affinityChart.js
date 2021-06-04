@@ -1,6 +1,55 @@
-    //testing drawing on canvas
-    var c = document.getElementById("affinityChart");
-    var ctx = c.getContext('2d');
-    ctx.moveTo(0,0);
-    ctx.lineTo(100,100);
+const c = document.getElementById("affinityChart");
+const ctx = c.getContext('2d');
+
+const a = 2 * Math.PI / 6;
+const bgRadius = 90;
+
+var hexPoints = [];
+var affinity = [];
+
+function init()
+{
+    //draw hexagons
+    for(var i = 0; i < 6; i++)
+    {
+        hexPoints.push(drawHexagon(100,100,bgRadius - (i * 15)));
+    }
+    //aesthetic circles
+    drawCircle(100,100, bgRadius + 2);
+    drawCircle(100,100, bgRadius + 5);
+    //rearange points for each affinity
+    for(var j = 0; j < 6; j++)
+    {
+        var affinityTemp = [];
+        for(var k = 0; k < 6; k++)
+        {
+            affinityTemp.push(hexPoints[k][j]);
+        }
+        affinity.push(affinityTemp);
+    } 
+}
+init();
+
+function drawHexagon(x,y,r)
+{
+    var points = [];
+    ctx.beginPath();
+    for (var i = 0; i < 6; i++)
+    {
+        var _x = x + r * Math.sin(a * i);
+        var _y = y + r * Math.cos(a * i);
+        ctx.lineTo(_x, _y);
+        points.push([_x, _y]);
+    }
+    ctx.closePath();
     ctx.stroke();
+    return points;
+}
+
+function drawCircle(x,y,r)
+{
+    ctx.beginPath();
+    ctx.arc(x,y,r,0,2 * Math.PI);
+    ctx.stroke();
+}
+
