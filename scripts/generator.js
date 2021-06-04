@@ -144,6 +144,7 @@ function generate()
 
         var rowNumber = document.createTextNode(i + 1);
         var generatedText = "";
+        
 
         switch(generator)
         {
@@ -174,7 +175,7 @@ function generate()
 
 function pickAffinity()
 {
-    // s - 1/250 a 5/250 b 10/250  c 50/250 d 100/250 e 90/250
+    // s - 1/200 a 1/40 b 1/20  c 1/4 d 9/20 e 1/4
     var affinity = [];
     for(var i = 0; i < 6; i++)
     {
@@ -204,8 +205,10 @@ function pickAffinity()
             affinity[i] = "E";
         }
     }
-    return "Ignis: " + affinity[0] + ", Aqua: " + affinity[1] + ", Terra: " + affinity[2] +  
-           ", Vis: " + affinity[3] + ", Lux: " + affinity[4] + ", Nox: " + affinity[5];
+    init();
+    drawChart(affinity);
+    return "Vis: " + affinity[0] + ", Aqua: " + affinity[1] + ", Nox: " + affinity[2] +  
+           ", Terra: " + affinity[3] + ", Lux: " + affinity[4] + ", Ignis: " + affinity[5];
 }
 
 function pickElement()
