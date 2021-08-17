@@ -197,6 +197,7 @@ var currentLocations =
     "Ilada",
     "Naucrias",
     "Oea",
+    "Savili",
     "Virosa",
     "Stepis",
     "Lisios",
@@ -289,7 +290,7 @@ function generate()
 function pickLocation()
 {
     var proximity = ["in the center of", "nearby", "just outside of", "in the bad part of", "in the affluent part of", "underneath", "inside of", "near", "close to", "in", 
-    "just inside of", "in an inn in", "on the outskirts of", "somewhere inside of", "the highest part of"].random();
+    "just inside of", "in an inn in", "on the outskirts of", "somewhere inside of", "the highest part of", "on the road to"].random();
     return proximity + " " + currentLocations.random();
 }
 
