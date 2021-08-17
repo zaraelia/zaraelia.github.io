@@ -273,6 +273,9 @@ function generate()
             case "character":
                 generatedText = document.createTextNode(pickCharacter()); 
                 break;
+            case "location":
+                generatedText = document.createTextNode(pickLocation()); 
+                break;
             default:
                 //do something
         }
@@ -282,6 +285,13 @@ function generate()
     } 
     
 } 
+
+function pickLocation()
+{
+    var proximity = ["in the center of", "nearby", "just outside of", "in the bad part of", "in the affluent part of", "underneath", "inside of", "near", "close to", "in", 
+    "just inside of", "in an inn in", "on the outskirts of", "somewhere inside of", "the highest part of"].random();
+    return proximity + " " + currentLocations.random();
+}
 
 function pickMartialArt()
 {
