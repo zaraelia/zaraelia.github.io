@@ -73,9 +73,9 @@ var oneHandedWeapons=
 
 var auxiliaryWeapons=
 [
-    "dagger",
-    "wand",
-    "trinket",
+    "daggers",
+    "wands",
+    "trinkets",
     "throwing knives",
     "throwing axes",
     "chakram",
@@ -103,7 +103,8 @@ var twoHandedWeapons =
     "longbow",
     "shortbow",
     "magic fists",
-    "fist weapons"
+    "fist weapons",
+    "bare fists"
 ]
 
 var shields = 
@@ -125,6 +126,109 @@ var ranks =
 [
     "S", "A", "B", "C", "D", "E"
 ]
+
+var pastLocations = 
+[
+    "Old Helira",
+    "Old Pavati",
+    "the Shiavan Empire",
+    "the Goba Kingdom",
+    "Imret",
+    "Seyni",
+    "Kanac",
+    "Vakvia"
+]
+
+var currentLocations = 
+[
+    "Helira",
+    "Osca",
+    "Canovia",
+    "Shiabb",
+    "Hedij",
+    "Goba",
+    "UTF",
+    "Vauxcester",
+    "Forum",
+    "Estrium",
+    "Waden",
+    "Jitra",
+    "Southern Pavati",
+    "Northern Pavati",
+    "Sorbetto",
+    "Statsora",
+    "Blaghold",
+    "Voxrath",
+    "Aetherport",
+    "Flamhaven",
+    "Rivenden",
+    "Umbrafall",
+    "Lonbiel",
+    "Westland",
+    "Goldcliff",
+    "Duskworth",
+    "Highcross",
+    "Hallowind",
+    "Glumstone",
+    "Plain Roost",
+    "Dead Man's Retreat",
+    "the Sanquine Enclave",
+    "Moth",
+    "Borli",
+    "Uto",
+    "Aclo",
+    "Acteli",
+    "Mach",
+    "Exling Cay",
+    "Borhu",
+    "Ebom Isle",
+    "Boll",
+    "the Engami Isles",
+    "Akitol",
+    "Bellgarde",
+    "Erus",
+    "Castemont",
+    "Sonius",
+    "Eton",
+    "Pietra Velenosa",
+    "Alvira",
+    "Pelligus",
+    "Vetagne",
+    "Ilada",
+    "Naucrias",
+    "Oea",
+    "Virosa",
+    "Stepis",
+    "Lisios",
+    "Amesris",
+    "Embertide",
+    "Berytis",
+    "Cinder Post",
+    "Sanzudo",
+    "Zomze",
+    "Khanu",
+    "Garno",
+    "Revinot",
+    "Takri",
+    "Bahet",
+    "Nabi",
+    "Liru",
+    "Irsus",
+    "Mavanor",
+    "Grasmere",
+    "Qagash",
+    "Yarrin",
+    "Kald",
+    "Flurris",
+    "Eo Serine",
+    "Ifalrius",
+    "Bostra",
+    "Bellechu",
+    "Lothecia",
+    "Jorundarfell",
+]
+
+
 
 
 function generate()
@@ -163,6 +267,12 @@ function generate()
             case "affinity" :
                 generatedText = document.createTextNode(pickAffinity());
                 break;
+            case "martial":
+                generatedText = document.createTextNode(pickMartialArt());
+                break;
+            case "character":
+                generatedText = document.createTextNode(pickCharacter()); 
+                break;
             default:
                 //do something
         }
@@ -171,6 +281,119 @@ function generate()
         cell1.appendChild(generatedText);
     } 
     
+} 
+
+function pickMartialArt()
+{
+    //prestige
+    var prestige = "A martial arts school that ";
+    var time = ["is currently" , "was once"].random();
+    var scale = ["locally", "regionally", "globally", "irrelevant"].random();
+    var fame = ["revered", "respected", "well known", "met with suspicion", "hated"].random();
+    var past = ["is now lost to time", "has been watered down", "split into multiple schools", "has been forgotten", "failed to be passed down", "lost most of its followers"].random();
+
+    
+    prestige = prestige.concat(time + " " + scale);
+    if(time == "is currently" && scale != "irrelevant")
+    {
+        prestige = prestige.concat(" " + fame);
+    }
+    if(time == "was once" && scale != "irrelevant")
+    {
+        prestige = prestige.concat(" "  + fame + " but " + past);
+    }
+    prestige = prestige.concat(".  ");
+
+    //type and location.
+    var  schoolType = "";
+    if(time == "is currently")
+    {
+        schoolType = "It is taught in a ";
+    }
+    else
+    {
+        schoolType = "It was taught in a "; 
+    }  
+
+    var building = ["private institution", "dojo", "government facility", "monestary", "gymnasium", "studio", "schoolyard", "park"].random();
+    var age = getRandomArbitrary(0,2);
+    if(age == 0)
+    {
+        schoolType = schoolType.concat(building + " in " + currentLocations.random() +  " with roots that can be traced back to " + pastLocations.random() + ".");
+    }
+    else
+    {
+        schoolType = schoolType.concat(building + " which originated in " + currentLocations.random() + ".");
+    }
+    
+    //weapons
+    var weaponsTaught = " Practitioners use ";
+    var numWeapons = getRandomArbitrary(1,4);
+    for(let x = 0; x < numWeapons ; x++)
+    {
+        if(x == 1)
+        {
+            weaponsTaught = weaponsTaught.concat("They also use ");
+        }
+        if(x == 2)
+        {
+            weaponsTaught = weaponsTaught.concat("Less commonly, they use ")
+        }
+
+        var weaponTypeRoll = getRandomArbitrary(0,4);
+        switch(weaponTypeRoll)
+        {
+            case 0:
+                weaponsTaught = weaponsTaught.concat(pickOneHandWeapon() + "s");
+                break;
+            case 1:
+                weaponsTaught = weaponsTaught.concat(pickAuxiliaryWeapon());
+                break;
+            case 2: 
+                weaponsTaught = weaponsTaught.concat(pickTwoHandWeapon() +"s");
+                break;
+            case 3:
+                weaponsTaught = weaponsTaught.concat(pickOneHandWeapon()+"s paired with a " + shields.random() + " shield");
+                break;
+            default:
+        }
+        if(weaponsTaught.slice(-2) == "ss")
+        {
+            weaponsTaught = weaponsTaught.slice(0, -1);
+        }
+        weaponsTaught = weaponsTaught.concat(".  ");
+    }
+    //elements
+    var elementsTaught = "The techniques are primarily "
+    
+    var numElements = getRandomArbitrary(1,4);
+    for(let x = 0; x < numWeapons ; x++)
+    {
+        if(x == 1)
+        {
+            elementsTaught = elementsTaught.concat("They occasionally utilize ")
+        }
+        if(x == 2)
+        {
+            elementsTaught = elementsTaught.concat("In certain scenarios, they use ")
+        }
+        elementsTaught = elementsTaught.concat(pickElement() + " " + pickSchool() + " spells.  ");
+    }
+    //general philosophy
+    //fighting style
+    var fightingStyles = ["striking", "offensive actions", "defensive actions", "counterattacking", "adapting to unusual situations", "grappling", "being well rounded", "zoning", "gimmicks"].random();
+    var stylesTaught = "Practitioners are often considered to excel at " + fightingStyles + ".  "
+    //how its practiced
+    var practiceMethods = ["reading manuscripts", "learning from a master", "enduring years of rigorous training", "sparring", "dueling", "partaking in gladitorial combat", "meditating", "cultivating one's inner self", "practicing kata"].random();
+    var practiceTaught = "The most common way to study this school is by " + practiceMethods + ".  "
+    //put it together
+    var martialArtsSchool = prestige + schoolType + weaponsTaught + elementsTaught + stylesTaught + practiceTaught;
+    return martialArtsSchool;
+}
+
+function pickCharacter()
+{
+
 }
 
 function pickAffinity()
@@ -232,12 +455,12 @@ function pickWeapon()
         }
         if (!weaponBase.includes("fist"))
         {
-            weaponBase = "A " + weaponBase;
+            weaponBase = "a " + weaponBase;
         } 
     }
     else
     {
-        weaponBase = "A "+ pickOneHandWeapon() + " in the main hand";
+        weaponBase = "a "+ pickOneHandWeapon() + " in the main hand";
 
         var oneHandRoll = Math.floor(Math.random() * 30);
         console.log(oneHandRoll);
@@ -310,4 +533,8 @@ function showDiv(element)
         default:
             document.getElementById("affinity").style.display = 'none';
     }
+}
+
+function getRandomArbitrary(min, max) {
+    return Math.floor(Math.random() * (max - min) + min);
 }
