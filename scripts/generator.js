@@ -287,6 +287,55 @@ function generate()
     
 } 
 
+function pickCharacter()
+{
+    //appearance
+    //age
+    var ageType = ["young child", "child", "pre-teen", "teenager", "young adult", "adult", "middle-aged adult", "elderly", "senior"].random();
+    //sex
+    var sex = ["male", "female"].random();
+    //birthday
+    var day = getRandomArbitrary(1,22);
+    var month = getRandomArbitrary(1,5);
+    var season = ["Winter", "Spring", "Summer", "Autumn"].random();
+    var birthday = "They were born on the " + day + " of the " + month + " month in " + season  + ".  ";
+    //eye color and shape
+    var eyeColor = ["black", "dark brown", "brown", "light brown", "amber", "hazel", "green", "emerald", "light green", "teal", "cyan","blue", "gray", "light gray", "light blue", "red", "light purple", "violet", "orange", "yellow"].random();
+    var eyeShape = ["round", "monolid", "hooded", "almond", "upturned", "downturned", "deep set", "protruding", "close set", "wide set"].random();
+    //hair color and style
+    var menHair;
+    var womenHair;
+    //skin tone
+    var skinTones = ["ivory", "porcelain", "pale ivory", "warm ivory", "beige","rose beige", "sienna", "almond", "sand", "chesnut", "bronze", "umber", "golden", "espresso"].random();
+    //physique
+    var physiques = [""].random();
+    //accesories
+    //facial hair (male only)
+    //tatoos
+    //glasses
+    //piercings
+    //physical conditions
+    //scars
+    //disfigurements
+    //birthmarks
+    //corruption
+    //congenital traits
+    
+    //power levels
+    //affinity
+    //weapon profficiencies
+    //birthplace
+    //curent location
+    //occuptation
+    //marital status
+    //wealth
+    //religion
+    //personality
+    //lifestyle traits
+    var characterDescription = "";
+    return characterDescription;
+}
+
 function pickLocation()
 {
     var proximity = ["in the center of", "nearby", "just outside of", "in the bad part of", "in the affluent part of", "underneath", "inside of", "near", "close to", "in", 
