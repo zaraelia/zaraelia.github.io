@@ -291,24 +291,69 @@ function pickCharacter()
 {
     //appearance
     //age
-    var ageType = ["young child", "child", "pre-teen", "teenager", "young adult", "adult", "middle-aged adult", "elderly", "senior"].random();
+    var ageType = ["young", "pre-teen", "teenage", "young adult", "adult", "middle-aged","senior", "elderly"].random();
     //sex
-    var sex = ["male", "female"].random();
+    var sexOld = ["man", "woman"].random();
+    var sexYoung = ["boy", "girl"].random();
+
+    switch(ageType)
+    {
+        case "young":
+        case "pre-teen":
+        case "teenage":
+            var sex = sexYoung;
+            break;
+        default:
+            var sex = sexOld;
+            break;
+    }
+
+    if(ageType == "adult" || ageType == "elderly")
+    {
+        var ageDescription = "An " + ageType + " " + sex + ".  ";
+    }
+    else
+    {
+        var ageDescription = "A " + ageType + " " + sex + ".  ";
+    }
+    if(sex == "man" || sex == "boy")
+    {
+       var pronoun = "He" 
+    }
+    else
+    {
+        var pronoun = "She"
+    }
+    
     //birthday
     var day = getRandomArbitrary(1,22);
-    var month = getRandomArbitrary(1,5);
+    var month = getRandomArbitrary(1,5); 
     var season = ["Winter", "Spring", "Summer", "Autumn"].random();
-    var birthday = "They were born on the " + day + " of the " + month + " month in " + season  + ".  ";
+    var birthday =  pronoun + " was born on day " + day + " of month " + month + " in " + season  + ".  ";
+    
     //eye color and shape
     var eyeColor = ["black", "dark brown", "brown", "light brown", "amber", "hazel", "green", "emerald", "light green", "teal", "cyan","blue", "gray", "light gray", "light blue", "red", "light purple", "violet", "orange", "yellow"].random();
     var eyeShape = ["round", "monolid", "hooded", "almond", "upturned", "downturned", "deep set", "protruding", "close set", "wide set"].random();
+    var eyeDescription = pronoun + " has " + eyeColor + " " + eyeShape + " eyes and "
     //hair color and style
-    var menHair;
-    var womenHair;
+    var hairColor = ["black", "dark brown", "brown", "light brown", "golden brown", "ash blonde", "honey blonde", "sandy blonde", "light blonde", "white", "gray", "light auburn", "auburn", "dark auburn",
+                    "green", "blue", "purple", "yellow", "orange", "red", "pink", "gold", "rose gold", "yellow green", "lime", "emerald", "ice blue", "dark pink", "light pink", "teal"];
+    var hairGradient = getRandomArbitrary(1,10);
+    if(hairGradient > 3) 
+    {
+        var charHairColor = hairColor.random();
+    }
+    else
+    {
+        var charHairColor = hairColor.random() + " / " + hairColor.random();
+    }
+    var hairstyle = ["short", "medium", "long", "very long"].random();
+
+    var hairDescription = hairstyle + " " + charHairColor + " hair.  ";
     //skin tone
     var skinTones = ["ivory", "porcelain", "pale ivory", "warm ivory", "beige","rose beige", "sienna", "almond", "sand", "chesnut", "bronze", "umber", "golden", "espresso"].random();
     //physique
-    var physiques = [""].random();
+    //var physiques = [""].random();
     //accesories
     //facial hair (male only)
     //tatoos
@@ -321,25 +366,36 @@ function pickCharacter()
     //corruption
     //congenital traits
     
+
     //power levels
     //affinity
     //weapon profficiencies
-    //birthplace
-    //curent location
+    //birthplace / current location
+    var locationRoll = getRandomArbitrary(0, 10);
+    if (locationRoll < 4)
+    {
+        var locationDescription = pronoun + " has lived " + pickLocation() + " since birth.  ";
+    }
+    else
+    {
+        var locationDescription = pronoun + " lives " + pickLocation() + " and was born in " + currentLocations.random();
+    }
     //occuptation
+    var jobYoung = ["student", "farmer", ]
     //marital status
     //wealth
     //religion
     //personality
     //lifestyle traits
-    var characterDescription = "";
+    var characterDescription = ageDescription + birthday + eyeDescription + hairDescription +  locationDescription;
     return characterDescription;
+    
 }
 
 function pickLocation()
 {
     var proximity = ["in the center of", "nearby", "just outside of", "in the bad part of", "in the affluent part of", "underneath", "inside of", "near", "close to", "in", 
-    "just inside of", "in an inn in", "on the outskirts of", "somewhere inside of", "the highest part of", "on the road to"].random();
+    "just inside of", "in an inn in", "on the outskirts of", "somewhere inside of", "on the highest part of", "on the road to"].random();
     return proximity + " " + currentLocations.random();
 }
 
@@ -449,11 +505,6 @@ function pickMartialArt()
     //put it together
     var martialArtsSchool = prestige + schoolType + weaponsTaught + elementsTaught + stylesTaught + practiceTaught;
     return martialArtsSchool;
-}
-
-function pickCharacter()
-{
-
 }
 
 function pickAffinity()
