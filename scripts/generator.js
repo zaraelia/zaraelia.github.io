@@ -528,7 +528,7 @@ function pickCharacter()
                 charStr = pronoun2 + " physiscal strength is normal; " + pronoun.toLowerCase() + " can lift " + pronoun2.toLowerCase() + " bodyweight.  ";
                 break;
             case "E":
-                pronoun2 + " physiscal strength is weak; " + pronoun.toLowerCase() + " is unable to lift " + pronoun2.toLowerCase() + " bodyweight.  ";
+                charStr = pronoun2 + " physiscal strength is weak; " + pronoun.toLowerCase() + " is unable to lift " + pronoun2.toLowerCase() + " bodyweight.  ";
                 break;
             default:
                 console.log("something went wrong");
