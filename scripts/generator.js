@@ -229,6 +229,119 @@ var currentLocations =
     "Jorundarfell",
 ]
 
+var virtues = 
+[
+    "Commitment",
+    "Cleanliness",
+    "Assertiveness",
+    "Confidence",
+    "Caring",
+    "Compassion",
+    "Gentleness",
+    "Kindness",
+    "Tact",
+    "Courage",
+    "Excellence",
+    "Consideration",
+    "Determination",
+    "Persevereance",
+    "Cooperation",
+    "Generosity",
+    "Courtesy",
+    "Honesty",
+    "Diligence",
+    "Forgiveness",
+    "Creativity",
+    "Enthusiasm",
+    "Respect",
+    "Loyalty",
+    "Idealism",
+    "Flexibility",
+    "Service",
+    "Helpfullness",
+    "Humility",
+    "Detachment",
+    "Friendliness",
+    "Love",
+    "Honor",
+    "Modesty",
+    "Patience",
+    "Purposefulness",
+    "Moderation",
+    "Reliability",
+    "Trustworthiness",
+    "Orderliness",
+    "Joyfulness",
+    "Peacefulness",
+    "Thankfulness",
+    "Self-discipline",
+    "Trust",
+    "Understanding",
+    "Integrity",
+    "Tolerance",
+    "Unity",
+    "Responsibility",
+    "Justice",
+    "Self-awareness"
+]
+
+var flaws = 
+[
+    "Unreliability",
+    "Uncleanliness",
+    "Unconfidence",
+    "Submissiveness",
+    "Timidity",
+    "Neglect",
+    "Hatred",
+    "Indifference",
+    "Courseness",
+    "Indiscretion",
+    "Cowardice",
+    "Mediocrity",
+    "Carelessness",
+    "Pusillanimity",
+    "Idleness",
+    "Noncooperation",
+    "Cheapness",
+    "Rudeness",
+    "Dishonesty",
+    "Laziness",
+    "Recrimination",
+    "Unoriginality",
+    "Apathy",
+    "Disrespect",
+    "Disloyalty",
+    "Cynicism",
+    "Stubbornness",
+    "Uselessness",
+    "Incompetence",
+    "Arrogance",
+    "Favoritism",
+    "Coldness",
+    "Hatred",
+    "Humiliation",
+    "Gluttony",
+    "Pride",
+    "Sloth",
+    "Lust",
+    "Greed",
+    "Wrath",
+    "Envy",
+    "Impatience",
+    "Hesitation",
+    "Distrust",
+    "Disorder",
+    "Gloom",
+    "Apprehensiveness",
+    "Ingratitude",
+    "Indulgence",
+    "Skepticism",
+    "Intolerance",
+    "Lawlessness",
+    "Ignorance",
+]
+
 
 
 
@@ -290,8 +403,38 @@ function generate()
 function pickCharacter()
 {
     //appearance
-    //age
+    //age 
     var ageType = ["young", "pre-teen", "teenage", "young adult", "adult", "middle-aged","senior", "elderly"].random();
+    var ageNum;
+    switch(ageType)
+    {
+        case "young":
+            ageNum = getRandomArbitrary(1,9);
+            break;
+        case "pre-teen":
+            ageNum = getRandomArbitrary(9,13);
+            break;
+        case "teenage":
+            ageNum = getRandomArbitrary(13, 20);
+            break;
+        case "young adult":
+            ageNum = getRandomArbitrary(18,30);
+            break;
+        case "adult":
+            ageNum = getRandomArbitrary(25,41);
+            break;
+        case "middle-aged":
+            ageNum = getRandomArbitrary(40,61);
+            break;
+        case "senior":
+            ageNum = getRandomArbitrary(60,81);
+            break;
+        case "elderly":
+            ageNum = getRandomArbitrary(81, 120);
+            break;
+        default:
+            break;       
+    }  
     //sex
     var sexOld = ["man", "woman"].random();
     var sexYoung = ["boy", "girl"].random();
@@ -308,21 +451,17 @@ function pickCharacter()
             break;
     }
 
-    if(ageType == "adult" || ageType == "elderly")
-    {
-        var ageDescription = "An " + ageType + " " + sex + ".  ";
-    }
-    else
-    {
-        var ageDescription = "A " + ageType + " " + sex + ".  ";
-    }
+    var ageDescription = "A " + ageNum + " year old " + ageType + " " + sex + ".  ";
+ 
     if(sex == "man" || sex == "boy")
     {
-       var pronoun = "He" 
+       var pronoun = "He";
+       var pronoun2 = "His";
     }
     else
     {
-        var pronoun = "She"
+        var pronoun = "She";
+        var pronoun2 = "Her";
     }
     
     //birthday
@@ -353,7 +492,7 @@ function pickCharacter()
     //skin tone
     var skinTones = ["ivory", "porcelain", "pale ivory", "warm ivory", "beige","rose beige", "sienna", "almond", "sand", "chesnut", "bronze", "umber", "golden", "espresso"].random();
     //physique
-    //var physiques = [""].random();
+    var physiques = [""].random();
     //accesories
     //facial hair (male only)
     //tatoos
@@ -366,19 +505,48 @@ function pickCharacter()
     //corruption
     //congenital traits
     
-
     //power levels
     //affinity
+    var charAffinity = pronoun2 + " affinity is -  " + pickAffinity() + ".  ";
+    //str
+    var charStr = ranks.random();
+    switch(charStr)
+        {
+            case "S":
+                charStr = pronoun2 + " physical strength is nearly incalcuable; " + pronoun.toLowerCase() + " is able to lift more than a blue whale.  ";
+                break;
+            case "A":
+                charStr = pronoun2 + " physical strength is unnaturally superhuman; " + pronoun.toLowerCase() + " can lift up to 50 tons.  ";
+                break;
+            case "B":
+                charStr = pronoun2 + " physiscal strength is superhuman; " + pronoun.toLowerCase() + " can lift up to three and a half walrusses. ";
+                break;
+            case "C":
+                charStr = pronoun2 + " physiscal strength is in peak human condition; " + pronoun.toLowerCase() + " can lift up to one walrus.  ";
+                break;
+            case "D":
+                charStr = pronoun2 + " physiscal strength is normal; " + pronoun.toLowerCase() + " can lift " + pronoun2.toLowerCase() + " bodyweight.  ";
+                break;
+            case "E":
+                pronoun2 + " physiscal strength is weak; " + pronoun.toLowerCase() + " is unable to lift " + pronoun2.toLowerCase() + " bodyweight.  ";
+                break;
+            default:
+                console.log("something went wrong");
+        }
+    //dex
+    //sta
+    //int
+    //general fighting skills
     //weapon profficiencies
     //birthplace / current location
     var locationRoll = getRandomArbitrary(0, 10);
     if (locationRoll < 4)
     {
-        var locationDescription = pronoun + " has lived " + pickLocation() + " since birth.  ";
+        var locationDescription = pronoun + " has lived " + pickLocation() + " " +  pronoun2.toLowerCase() + " whole life.  ";
     }
     else
     {
-        var locationDescription = pronoun + " lives " + pickLocation() + " and was born in " + currentLocations.random();
+        var locationDescription = pronoun + " lives " + pickLocation() + " and was born in " + currentLocations.random() + ".  ";
     }
     //occuptation
     var jobYoung = ["student", "farmer", ]
@@ -386,8 +554,9 @@ function pickCharacter()
     //wealth
     //religion
     //personality
+    var personality = pronoun + " exhibits " + virtues.random() + " and " + virtues.random() + "; but shows " + flaws.random() +  " and "+ flaws.random() + " at times.  ";
     //lifestyle traits
-    var characterDescription = ageDescription + birthday + eyeDescription + hairDescription +  locationDescription;
+    var characterDescription = ageDescription + birthday + eyeDescription + hairDescription + charAffinity + locationDescription + charStr + personality;
     return characterDescription;
     
 }
