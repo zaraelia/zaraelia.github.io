@@ -491,6 +491,7 @@ function pickCharacter()
     var hairDescription = hairstyle + " " + charHairColor + " hair.  ";
     //skin tone
     var skinTones = ["ivory", "porcelain", "pale ivory", "warm ivory", "beige","rose beige", "sienna", "almond", "sand", "chesnut", "bronze", "umber", "golden", "espresso"].random();
+    var skinDescription = pronoun + " has " + skinTones + " complexion.  ";
     //physique
     var physiques = [""].random();
     //accesories
@@ -556,7 +557,7 @@ function pickCharacter()
     //personality
     var personality = pronoun + " exhibits " + virtues.random() + " and " + virtues.random() + "; but shows " + flaws.random() +  " and "+ flaws.random() + " at times.  ";
     //lifestyle traits
-    var characterDescription = ageDescription + birthday + eyeDescription + hairDescription + charAffinity + locationDescription + charStr + personality;
+    var characterDescription = ageDescription + birthday + skinDescription + eyeDescription + hairDescription + charAffinity + locationDescription + charStr + personality;
     return characterDescription;
     
 }
