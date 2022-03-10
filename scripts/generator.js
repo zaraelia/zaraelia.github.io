@@ -514,7 +514,7 @@ function pickCharacter()
     switch(charStr)
         {
             case "S":
-                charStr = pronoun2 + " physical strength is nearly incalcuable; " + pronoun.toLowerCase() + " is able to lift more than a blue whale.\n";
+                charStr = pronoun + " has neraly incalcuable physical strength; " + pronoun.toLowerCase() + " is able to lift more than a blue whale.\n";
                 break;
             case "A":
                 charStr = pronoun2 + " physical strength is unnaturally superhuman; " + pronoun.toLowerCase() + " can lift up to 50 tons.\n";
@@ -539,10 +539,10 @@ function pickCharacter()
     switch(charDex)
         {
             case "S":
-                charDex = pronoun2 + " has absolute reflexes " + pronoun.toLowerCase() + " can react to and dodge any attack, regardless of its speed.\n";
+                charDex = pronoun + " has absolute reflexes; " + pronoun.toLowerCase() + " can react to and dodge any attack, regardless of its speed.\n";
                 break;
             case "A":
-                charDex = pronoun2 + " reaction time is supernatural;" + pronoun.toLowerCase() + " can consistently react to extremely fast moving attacks such as lightning.\n";
+                charDex = pronoun2 + " reaction time is supernatural; " + pronoun.toLowerCase() + " can consistently react to extremely fast moving attacks such as lightning.\n";
                 break;
             case "B":
                 charDex = pronoun2 + " reaction time is enhanced; " + pronoun.toLowerCase() + " can react to many fast moving attacks in complex scenarios. \n";
@@ -560,6 +560,30 @@ function pickCharacter()
                 console.log("something went wrong");
         }
     //sta
+    var charSta = ranks.random();
+    switch(charSta)
+        {
+            case "S":
+                charSta = pronoun + " has absolute resilience" + pronoun.toLowerCase() + " is able to indefinitely perform actions and can sustain an incalcuable amount of damage.\n";
+                break;
+            case "A":
+                charSta = pronoun2 + " resilience is supernatural; " + pronoun.toLowerCase() + " is able to survive in extreme conditions for several hours and can fight or perform actions under normal circumstances for several days.\n";
+                break;
+            case "B":
+                charSta = pronoun2 + " resilience is enhanced; " + pronoun.toLowerCase() + " is able to survive what would otherwise kill a normal human and can fight or perform actions for a prolonged period of time.\n";
+                break;
+            case "C":
+                charSta = pronoun2 + " resilience is peak human;" + pronoun.toLowerCase() + " is able to fight or perform actions for about a day.\n";
+                break;
+            case "D":
+                charSta = pronoun2 + " resilience is normal; " + pronoun.toLowerCase() + " is able to actively do things for around 8 hours.\n";
+                break;
+            case "E":
+                charSta = pronoun2 + " resilience is below average; " + pronoun.toLowerCase() + " cannot actively do things for less than 8 hours." + pronoun.toLowerCase() + " has lower bone density and is more susceptible to physical damage.\n";
+                break;
+            default:
+                console.log("something went wrong");
+        }
     //int
     //general fighting skills
     //weapon profficiencies
@@ -586,7 +610,7 @@ function pickCharacter()
                                "\nAPPEARANCE\n" + skinDescription + eyeDescription + hairDescription + physiqueDescription + 
                                "\nPERSONALITY\n" + personality +
                                "\nAFFINITY\n" + charAffinity +
-                               "\nSTATS\n" + charStr + charDex;
+                               "\nSTATS\n" + charStr + charDex + charSta;
     return characterDescription;
     
 }
