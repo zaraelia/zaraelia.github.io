@@ -508,33 +508,57 @@ function pickCharacter()
     //congenital traits
     //power levels
     //affinity
-    var charAffinity = pronoun2 + " affinity is -  " + pickAffinity() + ".  ";
+    var charAffinity = pronoun2 + " affinity is - " + pickAffinity() + ".  ";
     //str
     var charStr = ranks.random();
     switch(charStr)
         {
             case "S":
-                charStr = pronoun2 + " physical strength is nearly incalcuable; " + pronoun.toLowerCase() + " is able to lift more than a blue whale.  ";
+                charStr = pronoun2 + " physical strength is nearly incalcuable; " + pronoun.toLowerCase() + " is able to lift more than a blue whale.\n";
                 break;
             case "A":
-                charStr = pronoun2 + " physical strength is unnaturally superhuman; " + pronoun.toLowerCase() + " can lift up to 50 tons.  ";
+                charStr = pronoun2 + " physical strength is unnaturally superhuman; " + pronoun.toLowerCase() + " can lift up to 50 tons.\n";
                 break;
             case "B":
-                charStr = pronoun2 + " physiscal strength is superhuman; " + pronoun.toLowerCase() + " can lift up to three and a half walrusses. ";
+                charStr = pronoun2 + " physiscal strength is superhuman; " + pronoun.toLowerCase() + " can lift up to three and a half walrusses.\n";
                 break;
             case "C":
-                charStr = pronoun2 + " physiscal strength is in peak human condition; " + pronoun.toLowerCase() + " can lift up to one walrus.  ";
+                charStr = pronoun2 + " physiscal strength is in peak human condition; " + pronoun.toLowerCase() + " can lift up to one walrus.\n";
                 break;
             case "D":
-                charStr = pronoun2 + " physiscal strength is normal; " + pronoun.toLowerCase() + " can lift " + pronoun2.toLowerCase() + " bodyweight.  ";
+                charStr = pronoun2 + " physiscal strength is normal; " + pronoun.toLowerCase() + " can lift " + pronoun2.toLowerCase() + " bodyweight.\n";
                 break;
             case "E":
-                charStr = pronoun2 + " physiscal strength is weak; " + pronoun.toLowerCase() + " is unable to lift " + pronoun2.toLowerCase() + " bodyweight.  ";
+                charStr = pronoun2 + " physiscal strength is weak; " + pronoun.toLowerCase() + " is unable to lift " + pronoun2.toLowerCase() + " bodyweight.\n";
                 break;
             default:
                 console.log("something went wrong");
         }
     //dex
+    var charDex = ranks.random();
+    switch(charDex)
+        {
+            case "S":
+                charDex = pronoun2 + " has absolute reflexes " + pronoun.toLowerCase() + " can react to and dodge any attack, regardless of its speed.\n";
+                break;
+            case "A":
+                charDex = pronoun2 + " reaction time is supernatural;" + pronoun.toLowerCase() + " can consistently react to extremely fast moving attacks such as lightning.\n";
+                break;
+            case "B":
+                charDex = pronoun2 + " reaction time is enhanced; " + pronoun.toLowerCase() + " can react to many fast moving attacks in complex scenarios. \n";
+                break;
+            case "C":
+                charDex = pronoun2 + " reaction time is peak human;" + pronoun.toLowerCase() + " can react to most normal attacks and some fast moving attacks such as arrows and magic projectiles. \n";
+                break;
+            case "D":
+                charDex = pronoun2 + " reaction time is normal; " + pronoun.toLowerCase() + " can react to most slow moving attacks and some normal attacks.\n";
+                break;
+            case "E":
+                charDex = pronoun2 + " reaction time is below average; " + pronoun.toLowerCase() + " is not able to react consistently to normal attacks.\n";
+                break;
+            default:
+                console.log("something went wrong");
+        }
     //sta
     //int
     //general fighting skills
@@ -562,7 +586,7 @@ function pickCharacter()
                                "\nAPPEARANCE\n" + skinDescription + eyeDescription + hairDescription + physiqueDescription + 
                                "\nPERSONALITY\n" + personality +
                                "\nAFFINITY\n" + charAffinity +
-                               "\nSTATS\n" + charStr;
+                               "\nSTATS\n" + charStr + charDex;
     return characterDescription;
     
 }
