@@ -564,7 +564,7 @@ function pickCharacter()
     switch(charSta)
         {
             case "S":
-                charSta = pronoun + " has absolute resilience" + pronoun.toLowerCase() + " is able to indefinitely perform actions and can sustain an incalcuable amount of damage.\n";
+                charSta = pronoun + " has absolute resilience; " + pronoun.toLowerCase() + " is able to indefinitely perform actions and can sustain an incalcuable amount of damage.\n";
                 break;
             case "A":
                 charSta = pronoun2 + " resilience is supernatural; " + pronoun.toLowerCase() + " is able to survive in extreme conditions for several hours and can fight or perform actions under normal circumstances for several days.\n";
@@ -573,18 +573,42 @@ function pickCharacter()
                 charSta = pronoun2 + " resilience is enhanced; " + pronoun.toLowerCase() + " is able to survive what would otherwise kill a normal human and can fight or perform actions for a prolonged period of time.\n";
                 break;
             case "C":
-                charSta = pronoun2 + " resilience is peak human;" + pronoun.toLowerCase() + " is able to fight or perform actions for about a day.\n";
+                charSta = pronoun2 + " resilience is peak human; " + pronoun.toLowerCase() + " is able to fight or perform actions for about a day.\n";
                 break;
             case "D":
                 charSta = pronoun2 + " resilience is normal; " + pronoun.toLowerCase() + " is able to actively do things for around 8 hours.\n";
                 break;
             case "E":
-                charSta = pronoun2 + " resilience is below average; " + pronoun.toLowerCase() + " cannot actively do things for less than 8 hours." + pronoun.toLowerCase() + " has lower bone density and is more susceptible to physical damage.\n";
+                charSta = pronoun2 + " resilience is below average; " + pronoun.toLowerCase() + " cannot actively do things for less than 8 hours. " + pronoun + " has lower bone density and is more susceptible to physical damage.\n";
                 break;
             default:
                 console.log("something went wrong");
         }
     //int
+    var charInt = ranks.random();
+    switch(charInt)
+        {
+            case "S":
+                charInt = pronoun + " has absolute intelligence; " + pronoun2.toLowerCase() + " intellectual faculties transcend all other sentient beings in the universe.\n";
+                break;
+            case "A":
+                charInt = pronoun2 + " intelligence is supernatural; " + pronoun.toLowerCase() + " has glaringly more intelligence than other beings in the universe .\n";
+                break;
+            case "B":
+                charInt = pronoun2 + " intelligence is enhanced; " + pronoun.toLowerCase() + " has significantly above the standard genius-level intellect.\n";
+                break;
+            case "C":
+                charInt = pronoun2 + " intelligence is peak human;" + pronoun.toLowerCase() + " is able to use their brain more efficiently and effecively than most people.\n";
+                break;
+            case "D":
+                charInt = pronoun2 + " intelligence is normal.";
+                break;
+            case "E":
+                charInt = pronoun2 + " intelligence is below average; " + pronoun.toLowerCase() + " is not the sharpest tool in the shed.\n";
+                break;
+            default:
+                console.log("something went wrong");
+        }
     //general fighting skills
     //weapon profficiencies
     //birthplace / current location
@@ -610,7 +634,7 @@ function pickCharacter()
                                "\nAPPEARANCE\n" + skinDescription + eyeDescription + hairDescription + physiqueDescription + 
                                "\nPERSONALITY\n" + personality +
                                "\nAFFINITY\n" + charAffinity +
-                               "\nSTATS\n" + charStr + charDex + charSta;
+                               "\nSTATS\n" + charStr + charDex + charSta + charInt;
     return characterDescription;
     
 }
