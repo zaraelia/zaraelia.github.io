@@ -505,7 +505,6 @@ function pickCharacter()
     //birthmarks
     //corruption
     //congenital traits
-    
     //power levels
     //affinity
     var charAffinity = pronoun2 + " affinity is -  " + pickAffinity() + ".  ";
@@ -557,7 +556,11 @@ function pickCharacter()
     //personality
     var personality = pronoun + " exhibits " + virtues.random() + " and " + virtues.random() + "; but shows " + flaws.random() +  " and "+ flaws.random() + " at times.  ";
     //lifestyle traits
-    var characterDescription = ageDescription + birthday + skinDescription + eyeDescription + hairDescription + charAffinity + locationDescription + charStr + personality;
+    // 
+    var characterDescription = "BASIC INFO\n" + ageDescription + birthday + locationDescription +  
+                               "\nAPPEARANCE\n" + skinDescription + eyeDescription + hairDescription +
+                               "\nPERSONALITY\n" + personality + 
+                               "\nPOWER LEVELS\n" + charAffinity + charStr;
     return characterDescription;
     
 }
