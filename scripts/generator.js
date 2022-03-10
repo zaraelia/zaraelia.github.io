@@ -468,7 +468,7 @@ function pickCharacter()
     var day = getRandomArbitrary(1,22);
     var month = getRandomArbitrary(1,5); 
     var season = ["Winter", "Spring", "Summer", "Autumn"].random();
-    var birthday =  pronoun + " was born on day " + day + " of month " + month + " in " + season  + ".  ";
+    var birthday =  pronoun + " was born on " + season + " " + month +  " Day " + day + ". ";
     
     //eye color and shape
     var eyeColor = ["black", "dark brown", "brown", "light brown", "amber", "hazel", "green", "emerald", "light green", "teal", "cyan","blue", "gray", "light gray", "light blue", "red", "light purple", "violet", "orange", "yellow"].random();
@@ -559,8 +559,9 @@ function pickCharacter()
     // 
     var characterDescription = "BASIC INFO\n" + ageDescription + birthday + locationDescription +  
                                "\nAPPEARANCE\n" + skinDescription + eyeDescription + hairDescription +
-                               "\nPERSONALITY\n" + personality + 
-                               "\nPOWER LEVELS\n" + charAffinity + charStr;
+                               "\nPERSONALITY\n" + personality +
+                               "\nAFFINITY\n" + charAffinity +
+                               "\nSTATS\n" + charStr;
     return characterDescription;
     
 }
