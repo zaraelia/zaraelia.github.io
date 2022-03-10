@@ -493,7 +493,8 @@ function pickCharacter()
     var skinTones = ["ivory", "porcelain", "pale ivory", "warm ivory", "beige","rose beige", "sienna", "almond", "sand", "chesnut", "bronze", "umber", "golden", "espresso"].random();
     var skinDescription = pronoun + " has " + skinTones + " complexion.  ";
     //physique
-    var physiques = [""].random();
+    var physiques = ["ectomorphic", "endomorphic", "mesomorphic", "fat", "skinny", "muscular", "toned", "athletic", "frail", "round"].random();
+    var physiqueDescription = pronoun2 + " physique is " + physiques + ". ";
     //accesories
     //facial hair (male only)
     //tatoos
@@ -558,7 +559,7 @@ function pickCharacter()
     //lifestyle traits
     // 
     var characterDescription = "BASIC INFO\n" + ageDescription + birthday + locationDescription +  
-                               "\nAPPEARANCE\n" + skinDescription + eyeDescription + hairDescription +
+                               "\nAPPEARANCE\n" + skinDescription + eyeDescription + hairDescription + physiqueDescription + 
                                "\nPERSONALITY\n" + personality +
                                "\nAFFINITY\n" + charAffinity +
                                "\nSTATS\n" + charStr;
