@@ -342,8 +342,7 @@ var flaws =
     "Ignorance",
 ]
 
-
-
+var bodyParts = ["arm", "upper arm", "forearm", "hand", "chest", "stomach", "neck", "head", "face", "upper back", "lower back", "thigh", "calf", "foot"];
 
 function generate()
 {
@@ -490,23 +489,42 @@ function pickCharacter()
 
     var hairDescription = hairstyle + " " + charHairColor + " hair.  ";
     //skin tone
-    var skinTones = ["ivory", "porcelain", "pale ivory", "warm ivory", "beige","rose beige", "sienna", "almond", "sand", "chesnut", "bronze", "umber", "golden", "espresso"].random();
+    var skinTones = ["ivory", "porcelain", "pale ivory", "warm ivory", "beige", "rose beige", "sienna", "almond", "sand", "chesnut", "bronze", "umber", "golden", "espresso"].random();
     var skinDescription = pronoun + " has " + skinTones + " complexion.  ";
     //physique
     var physiques = ["ectomorphic", "endomorphic", "mesomorphic", "fat", "skinny", "muscular", "toned", "athletic", "frail", "round"].random();
     var physiqueDescription = pronoun2 + " physique is " + physiques + ". ";
     //accesories
     //facial hair (male only)
-    //tatoos
+    
+    //tattoos
+    var tattooDescription = pronoun + " has no tattoos. ";
+    var tattooRoll = getRandomArbitrary(1,100);
+    if (tattooRoll < 10)
+    {
+        tattooDescription = pronoun + " has a tattoo on " + pronoun2.toLowerCase() + " " + bodyParts.random() + ". ";
+    }
     //glasses
     //piercings
     //physical conditions
     //scars
+    var scarDescription = pronoun + " has no visible scars. ";
+    var scarRoll = getRandomArbitrary(1,100);
+    if (scarRoll < 20)
+    {
+        var scarSize = ["small", "large"];
+        var scarType = ["keloid", "hypertrophic", "pitted", "contracture"];
+        scarDescription = pronoun + " has a " + scarSize.random() + " " + scarType.random() + " scar on " + pronoun2.toLowerCase() + " " + bodyParts.random();
+        if(scarRoll < 10)
+        {
+            scarDescription += " and a " + scarSize.random() + " " + scarType.random() + " scar on " + pronoun2.toLowerCase + " " + bodyParts.random();
+        }
+        scarDescription += ". ";
+    }
     //disfigurements
     //birthmarks
     //corruption
     //congenital traits
-    //power levels
     //affinity
     var charAffinity = pronoun2 + " affinity is - " + pickAffinity() + ".  ";
     //str
@@ -631,7 +649,8 @@ function pickCharacter()
     //lifestyle traits
     // 
     var characterDescription = "BASIC INFO\n" + ageDescription + birthday + locationDescription +  
-                               "\nAPPEARANCE\n" + skinDescription + eyeDescription + hairDescription + physiqueDescription + 
+                               "\nAPPEARANCE\n" + skinDescription + eyeDescription + hairDescription + physiqueDescription + "\n" 
+                                                + tattooDescription + scarDescription +  
                                "\nPERSONALITY\n" + personality +
                                "\nAFFINITY\n" + charAffinity +
                                "\nSTATS\n" + charStr + charDex + charSta + charInt;
