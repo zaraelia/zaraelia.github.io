@@ -468,6 +468,10 @@ function pickCharacter()
     var month = getRandomArbitrary(1,5); 
     var season = ["Winter", "Spring", "Summer", "Autumn"].random();
     var birthday =  pronoun + " was born on " + season + " " + month +  " Day " + day + ". ";
+
+    //blood type
+    var bloodTypes = ["O+", "O-", "A+", "A-", "B+", "B-", "AB+", "AB-"].random();
+    var bloodTypeDescription = pronoun2 + " blood type is " + bloodTypes + ". "
     
     //eye color and shape
     var eyeColor = ["black", "dark brown", "brown", "light brown", "amber", "hazel", "green", "emerald", "light green", "teal", "cyan","blue", "gray", "light gray", "light blue", "red", "light purple", "violet", "orange", "yellow"].random();
@@ -517,7 +521,7 @@ function pickCharacter()
         scarDescription = pronoun + " has a " + scarSize.random() + " " + scarType.random() + " scar on " + pronoun2.toLowerCase() + " " + bodyParts.random();
         if(scarRoll < 10)
         {
-            scarDescription += " and a " + scarSize.random() + " " + scarType.random() + " scar on " + pronoun2.toLowerCase + " " + bodyParts.random();
+            scarDescription += " and a " + scarSize.random() + " " + scarType.random() + " scar on " + pronoun2.toLowerCase() + " " + bodyParts.random();
         }
         scarDescription += ". ";
     }
@@ -648,7 +652,8 @@ function pickCharacter()
     var personality = pronoun + " exhibits " + virtues.random() + " and " + virtues.random() + "; but shows " + flaws.random() +  " and "+ flaws.random() + " at times.  ";
     //lifestyle traits
     // 
-    var characterDescription = "BASIC INFO\n" + ageDescription + birthday + locationDescription +  
+    var characterDescription = "BASIC INFO\n" + ageDescription + birthday + locationDescription + "\n"
+                                              + bloodTypeDescription + 
                                "\nAPPEARANCE\n" + skinDescription + eyeDescription + hairDescription + physiqueDescription + "\n" 
                                                 + tattooDescription + scarDescription +  
                                "\nPERSONALITY\n" + personality +
